@@ -1,3 +1,7 @@
+require "app/scenes/menu"
+require "app/scenes/gameplay"
+require "app/scenes/gameover"
+
 def handle_scenes(state, args)
   case state
   when  "menu"
@@ -10,7 +14,8 @@ def handle_scenes(state, args)
 end
 
 def tick args
-  args.state.scene ||= "gameplay"
+  args.state.levels_completed ||= [ true, true, false, false, true, true, false ]
+  args.state.scene ||= "menu"
   handle_scenes(args.state.scene, args)
 end
 

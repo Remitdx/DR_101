@@ -1,5 +1,18 @@
-* EXCEPTION: uninitialized constant Scenes::Gameplay::PlayerControls
+* EXCEPTION:
+* ERROR - :current_lvl_selected method missing on ~Scenes::Menu~.
+
+#+begin_src ~Scenes::Menu#inspect~
+#<Scenes::Menu:0x21db3911930>
+#+end_src ~Scenes::Menu#inspect~
+
+
+
+The method named
+  :current_lvl_selected
+doesn't exist on [Scenes::Menu, #<Class:#<Scenes::Menu:0x21db3911930>>].
+
+(suggestions above)
 ** Backtrace:
-*** app/scenes/gameplay.rb:104:in gameplay_tick
-*** app/main.rb:6:in handle_scenes
-*** app/main.rb:14:in tick
+*** app/scenes/menu.rb:23:in menu_tick
+*** app/main.rb:8:in handle_scenes
+*** app/main.rb:20:in tick
