@@ -1,19 +1,5 @@
-* EXCEPTION:
-* ERROR - :each method missing on ~Class~.
-
-#+begin_src ~Class#inspect~
-NIL
-#+end_src ~Class#inspect~
-
-
-
-The method named
-  :each
-doesn't exist on [NilClass].
-
-(suggestions above)
+* EXCEPTION: uninitialized constant Scenes::Gameplay::PlayerControls
 ** Backtrace:
-*** app/main.rb:13:in new_target_valid?
-*** app/main.rb:75:in tick
-*** app/main.rb:69:in tick
-*** app/main.rb:66:in tick
+*** app/scenes/gameplay.rb:104:in gameplay_tick
+*** app/main.rb:6:in handle_scenes
+*** app/main.rb:14:in tick
