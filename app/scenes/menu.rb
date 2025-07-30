@@ -3,8 +3,17 @@ module Scenes
     def menu_tick(args)
       current_lvl_selected ||= 0
 
+      args.outputs.labels << {  x: 1260 ,
+                                y: 690,
+                                text: "Press escape for achievements.",
+                                size_px: 20,
+                                alignment_enum: 2,
+                                r: 0,
+                                g: 0,
+                                b: 0
+                              }
       args.outputs.labels << {  x: args.grid.w / 2 ,
-                                y: 660,
+                                y: 690,
                                 text: "Crazy Pooper",
                                 size_px: 80,
                                 alignment_enum: 1,
@@ -12,15 +21,17 @@ module Scenes
                                 g: 0,
                                 b: 0
                               }
-      # background                       
-      args.outputs.solids << {  x: 0,
-                                y: 0,
-                                w: args.grid.w,
-                                h: args.grid.h,
-                                r: 255,
-                                g: 209,
-                                b: 26
+
+      args.outputs.labels << {  x: args.grid.w / 2 ,
+                                y: 590,
+                                text: "Tired of getting pooped over ? Time to fight back !",
+                                size_px: 30,
+                                alignment_enum: 1,
+                                r: 0,
+                                g: 0,
+                                b: 0
                               }
+      
       args.state.levels ||= [ { x: 210, y: 320, w: 200, h: 200, path: "sprites/hexagon/black.png" },
                               { x: 320, y: 140, w: 200, h: 200, path: "sprites/hexagon/#{grey_or_white_tile(1, args)}.png" },
                               { x: 430, y: 320, w: 200, h: 200, path: "sprites/hexagon/#{grey_or_white_tile(2, args)}.png" },
@@ -64,6 +75,11 @@ module Scenes
         end
       end
 
+      if args.inputs.keyboard.key_down.escape || args.inputs.controller_one.key_down.b
+        args.state.scene = "achievements"
+        return
+      end
+
       if args.inputs.keyboard.key_down.space || args.inputs.controller_one.key_down.a
         args.state.scene = "gameplay"
         args.state.current_lvl = current_lvl_selected
@@ -74,7 +90,6 @@ module Scenes
     end
 
     def grey_or_white_tile(lvl, args)
-      puts args.state.levels_completed[lvl]
       args.state.levels_completed[lvl] ? "gray" : "white"
     end
   end

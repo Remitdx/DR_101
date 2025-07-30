@@ -1,18 +1,23 @@
 * EXCEPTION:
-* ERROR - :current_lvl_selected method missing on ~Scenes::Menu~.
+* ERROR - :includes? method missing on ~Array~.
 
-#+begin_src ~Scenes::Menu#inspect~
-#<Scenes::Menu:0x21db3911930>
-#+end_src ~Scenes::Menu#inspect~
+#+begin_src ~Array#inspect~
+[true, true, true, false, false, false, false]
+#+end_src ~Array#inspect~
 
-
+** Did you mean?
+Here's a list of methods that kind of look like :includes?.
+*** :include?
+*** :include_any?
 
 The method named
-  :current_lvl_selected
-doesn't exist on [Scenes::Menu, #<Class:#<Scenes::Menu:0x21db3911930>>].
+  :includes?
+with args
+  [false]
+doesn't exist on [Array, #<Class:#<Array:0x203ec8f5ec0>>, Enumerable].
 
 (suggestions above)
 ** Backtrace:
-*** app/scenes/menu.rb:23:in menu_tick
-*** app/main.rb:8:in handle_scenes
-*** app/main.rb:20:in tick
+*** app/scenes/achievements.rb:24:in achievements_tick
+*** app/main.rb:18:in handle_scenes
+*** app/main.rb:43:in tick

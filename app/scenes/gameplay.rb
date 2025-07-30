@@ -5,11 +5,21 @@ module Scenes
     def gameplay_tick(args)
 
       if player_collide_target? args
-        args.state.scene = "menu"
+        args.state.scene = "levelfailed"
         args.state.player = starting_position_player
         args.state.balls = []
         args.state.score = 0
         args.state.targets = [ spawn_target, spawn_target, spawn_target ]
+        return
+      end
+
+      if args.state.score == args.state.levels_goals[args.state.current_lvl]
+        args.state.scene = "levelsucceed"
+        args.state.player = starting_position_player
+        args.state.balls = []
+        args.state.score = 0
+        args.state.targets = [ spawn_target, spawn_target, spawn_target ]
+        args.state.levels_completed[args.state.current_lvl] = true
         return
       end
       
@@ -31,7 +41,7 @@ module Scenes
       args.state.balls.each do |ball|
         ball.y -= 6
 
-        if ball.x > args.grid.w || ball.y < 0
+        if ball.x > args.grid.w || ball.y < -20
           ball.dead = true
           next
         end
@@ -40,6 +50,7 @@ module Scenes
           if args.geometry.intersect_rect?(target, ball)
             target.dead = true
             ball.dead = true
+            args.state.total_hits += 1
             args.state.score += 10
             new_target = spawn_target
             until new_target_valid?(args, new_target)
@@ -57,13 +68,26 @@ module Scenes
 
       args.outputs.labels  << { x: 20,
                                 y: 680,
-                                text: "Score : #{args.state.score}",
+                                text: "Level #{args.state.current_lvl + 1}",
                                 size_px: 20,
                               }
 
       args.outputs.labels  << { x: 20,
                                 y: 650,
-                                text: "Mission : reach #{100 - args.state.score}",
+                                text: "Mission : reach #{args.state.levels_goals[args.state.current_lvl]} points",
+                                size_px: 20,
+                              }
+
+      args.outputs.labels  << { x: 20,
+                                y: 620,
+                                text: "Score : #{args.state.score}",
+                                size_px: 20,
+                              }
+
+      
+      args.outputs.labels  << { x: 20,
+                                y: 590,
+                                text: "Poopometer : #{args.state.balls.count}",
                                 size_px: 20,
                               }
                               
