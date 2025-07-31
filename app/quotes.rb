@@ -3,26 +3,37 @@ def pick_quote args
 	case args.state.quote
 	when 1
 		kwassa args
+		args.state.quotes_saw[:kwassa] = true
 	when 2
 		pognon args
+		args.state.quotes_saw[:pognon] = true
 	when 3
 		travail args
+		args.state.quotes_saw[:travail] = true
 	when 4
 		ceder args
+		args.state.quotes_saw[:ceder] = true
 	when 5
 		predire args
+		args.state.quotes_saw[:predire] = true
 	when 6
 		explosion args
+		args.state.quotes_saw[:explosion] = true
 	when 7
 		responsable args
+		args.state.quotes_saw[:responsable] = true
 	when 8
 		poudre args
+		args.state.quotes_saw[:poudre] = true
 	when 9
 		guerre args
+		args.state.quotes_saw[:guerre] = true
 	when 10
 		projet args
+		args.state.quotes_saw[:projet] = true
 	when 11
 		gens args
+		args.state.quotes_saw[:gens] = true
 	end
 end
 
@@ -350,7 +361,7 @@ def ceder args
 													}
 	args.outputs.labels << {  x: args.grid.w / 2 - 200,
 													y: 490,
-													text: "Ni aux extrêmes.",
+													text: "ni aux extrêmes.",
 													size_px: 16,
 													alignment_enum: 0,
 													r: 0,
