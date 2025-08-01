@@ -11,9 +11,9 @@ module Scenes
                                 b: 0
                               }
       if args.state.total_hits < 500
-        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 520, w:60, h:60, path: "sprites/unchecked.png" }
+        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 510, w:60, h:60, path: "sprites/unchecked.png" }
       else
-        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 520, w:60, h:60, path: "sprites/approved.png" }
+        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 510, w:60, h:60, path: "sprites/approved.png" }
       end
       args.outputs.labels << {  x: args.grid.w / 6 ,
                                 y: 560,
@@ -32,9 +32,9 @@ module Scenes
                                 b: 0
                               }
       if args.state.levels_completed.include?(false)
-        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 440, w:60, h:60, path: "sprites/unchecked.png" }
+        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 430, w:60, h:60, path: "sprites/unchecked.png" }
       else
-        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 440, w:60, h:60, path: "sprites/approved.png" }
+        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 430, w:60, h:60, path: "sprites/approved.png" }
       end
       args.outputs.labels << {  x: args.grid.w / 6 ,
                                 y: 480,
@@ -46,16 +46,16 @@ module Scenes
                               }
       args.outputs.labels << {  x: args.grid.w / 6 ,
                                 y: 440,
-                                text: "Progression: #{levels_completed_counter(args)}/7",
+                                text: "Progression: #{levels_completed_counter(args)}/#{args.state.levels_completed.size}",
                                 size_px: 24,
                                 r: 0,
                                 g: 0,
                                 b: 0
                               }
       if quotes_saw_counter(args) < 11
-        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 360, w:60, h:60, path: "sprites/unchecked.png" }
+        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 350, w:60, h:60, path: "sprites/unchecked.png" }
       else
-        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 360, w:60, h:60, path: "sprites/approved.png" }
+        args.outputs.sprites << { x: args.grid.w / 6 * 5, y: 350, w:60, h:60, path: "sprites/approved.png" }
       end                    
       args.outputs.labels << {  x: args.grid.w / 6 ,
                                 y: 400,
@@ -67,7 +67,7 @@ module Scenes
                               }
       args.outputs.labels << {  x: args.grid.w / 6 ,
                                 y: 360,
-                                text: "Progression: #{quotes_saw_counter(args)}/11",
+                                text: "Progression: #{quotes_saw_counter(args)}/#{args.state.quotes_saw.size}",
                                 size_px: 24,
                                 r: 0,
                                 g: 0,

@@ -1,6 +1,5 @@
 require "app/scenes/menu"
 require "app/scenes/gameplay"
-require "app/scenes/gameover"
 require "app/scenes/achievements"
 require "app/scenes/levelfailed"
 require "app/scenes/levelsucceed"
@@ -39,9 +38,8 @@ def tick args
   args.state.total_hits ||= 0
   args.state.quotes_saw ||= { kwassa: false,	pognon: false,	
                               travail: false,	ceder: false,	predire: false,	
-                              explosion: false,	responsable: false,	poudre: false,	
+                              responsable: false,	poudre: false,	
                               guerre: false,	projet: false,	gens: false }
-  
   args.state.levels_completed ||= [ false, false, false, false, false, false, false ]
   args.state.levels_goals ||= [ 100, 200, 300, 400, 500, 600, 700 ]
   args.state.scene ||= "menu"

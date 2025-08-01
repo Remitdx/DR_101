@@ -1,5 +1,5 @@
 def pick_quote args
-	args.state.quote ||= rand(11)
+	args.state.quote ||= 1 + rand(10)
 	case args.state.quote
 	when 1
 		kwassa args
@@ -17,21 +17,18 @@ def pick_quote args
 		predire args
 		args.state.quotes_saw[:predire] = true
 	when 6
-		explosion args
-		args.state.quotes_saw[:explosion] = true
-	when 7
 		responsable args
 		args.state.quotes_saw[:responsable] = true
-	when 8
+	when 7
 		poudre args
 		args.state.quotes_saw[:poudre] = true
-	when 9
+	when 8
 		guerre args
 		args.state.quotes_saw[:guerre] = true
-	when 10
+	when 9
 		projet args
 		args.state.quotes_saw[:projet] = true
-	when 11
+	when 10
 		gens args
 		args.state.quotes_saw[:gens] = true
 	end
@@ -101,24 +98,6 @@ def predire args
 	args.outputs.labels << {  x: args.grid.w / 2 + 95,
 													y: 515,
 													text: "Qui aurait pu prédire ?",
-													size_px: 16,
-													alignment_enum: 0,
-													r: 0,
-													g: 0,
-													b: 0
-													}
-end
-
-def explosion args
-	args.outputs.sprites << { x: args.grid.w / 2 + 30,
-													y: 400,
-													w: 290,
-													h: 200,
-													path: 'sprites/bulle_explose.png'
-													}
-	args.outputs.labels << {  x: args.grid.w / 2 + 110,
-													y: 520,
-													text: "Macron, Explosion !",
 													size_px: 16,
 													alignment_enum: 0,
 													r: 0,
